@@ -25,3 +25,10 @@ export const formatStatusLabel = (value?: string): string => {
   if (!value) return "Unknown";
   return value.charAt(0).toUpperCase() + value.slice(1);
 };
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+export const isValidEmail = (value: string): boolean =>
+  EMAIL_REGEX.test(value.trim().toLowerCase());
+
+export const validatePassword = (value: string): boolean => value.length >= 8;

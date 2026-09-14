@@ -1,4 +1,4 @@
-import type { ImageSourcePropType } from "react-native";
+import type { ImageSourcePropType, TextInputProps } from "react-native";
 
 declare global {
   interface AppTab {
@@ -52,6 +52,33 @@ declare global {
   interface ListHeadingProps {
     title: string;
   }
+
+  interface AuthFieldProps {
+    label: string;
+    value: string;
+    onChangeText: (value: string) => void;
+    placeholder?: string;
+    error?: string;
+    invalid?: boolean;
+    secureTextEntry?: boolean;
+    keyboardType?: TextInputProps["keyboardType"];
+    autoComplete?: TextInputProps["autoComplete"];
+    textContentType?: TextInputProps["textContentType"];
+    editable?: boolean;
+  }
+
+  interface SignInFormValues {
+    email: string;
+    password: string;
+  }
+
+  interface SignUpFormValues {
+    email: string;
+    password: string;
+    confirmPassword: string;
+  }
+
+  type AuthFieldErrors = Partial<Record<string, string>>;
 }
 
 export {};

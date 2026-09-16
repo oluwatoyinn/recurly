@@ -1,5 +1,6 @@
 import AuthField from "@/components/AuthField";
 import "@/global.css";
+import { posthog } from "@/lib/posthog";
 import { isValidEmail, validatePassword } from "@/lib/utils";
 import { useSignUp } from "@clerk/expo";
 import { Link } from "expo-router";
@@ -56,6 +57,7 @@ const SignUp = () => {
 
     if (signUp.status === "complete") {
       await signUp.finalize();
+      posthog?.capture("sign_up_completed", { auth_method: "password" });
       return;
     }
 
@@ -76,6 +78,9 @@ const SignUp = () => {
 
     if (signUp.status === "complete") {
       await signUp.finalize();
+      posthog?.capture("email_verification_completed", {
+        verification_method: "email_code",
+      });
       return;
     }
 

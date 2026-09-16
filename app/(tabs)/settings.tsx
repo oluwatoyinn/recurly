@@ -1,5 +1,6 @@
 import images from "@/constants/images";
 import "@/global.css";
+import { posthog } from "@/lib/posthog";
 import { useAuth, useUser } from "@clerk/expo";
 import dayjs from "dayjs";
 import { styled } from "nativewind";
@@ -19,10 +20,20 @@ const Settings = () => {
     ? dayjs(user.createdAt).format("MMMM D, YYYY")
     : "Unknown";
 
+  const completeSignOut = async () => {
+    posthog?.capture("sign_out_completed");
+    posthog?.reset();
+    await signOut();
+  };
+
   const onSignOut = () => {
     Alert.alert("Sign out", "Are you sure you want to sign out?", [
       { text: "Cancel", style: "cancel" },
-      { text: "Sign out", style: "destructive", onPress: () => signOut() },
+      {
+        text: "Sign out",
+        style: "destructive",
+        onPress: () => void completeSignOut(),
+      },
     ]);
   };
 

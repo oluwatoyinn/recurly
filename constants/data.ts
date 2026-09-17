@@ -43,6 +43,28 @@ export const UPCOMING_SUBSCRIPTIONS: UpcomingSubscription[] = [
   },
 ];
 
+export const CATEGORY_OPTIONS = [
+  "Entertainment",
+  "AI Tools",
+  "Developer Tools",
+  "Design",
+  "Productivity",
+  "Cloud",
+  "Music",
+  "Other",
+] as const;
+
+export const CATEGORY_COLORS: Record<(typeof CATEGORY_OPTIONS)[number], string> = {
+  Entertainment: "#f5c542",
+  "AI Tools": "#b8d4e3",
+  "Developer Tools": "#e8def8",
+  Design: "#b8e8d0",
+  Productivity: "#8fd1bd",
+  Cloud: "#a7d8f0",
+  Music: "#f7b6c2",
+  Other: "#d9d9d9",
+};
+
 export const HOME_SUBSCRIPTIONS: Subscription[] = [
   {
     id: "adobe-creative-cloud",

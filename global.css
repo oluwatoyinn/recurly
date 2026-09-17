@@ -358,6 +358,22 @@
     @apply text-sm font-sans-bold text-accent;
   }
 
+  .subs-header {
+    @apply mb-4 gap-3;
+  }
+
+  .subs-title {
+    @apply text-2xl font-sans-bold text-primary;
+  }
+
+  .subs-subtitle {
+    @apply -mt-2 text-sm font-sans-medium text-muted-foreground;
+  }
+
+  .subs-search {
+    @apply rounded-2xl border border-border bg-card px-4 py-3 text-base font-sans-medium text-primary;
+  }
+
   .modal-overlay {
     @apply flex-1 bg-black/50;
   }

@@ -79,6 +79,12 @@ declare global {
   }
 
   type AuthFieldErrors = Partial<Record<string, string>>;
+
+  interface CreateSubscriptionModalProps {
+    visible: boolean;
+    onClose: () => void;
+    onCreate: (subscription: Subscription) => void;
+  }
 }
 
 export {};
